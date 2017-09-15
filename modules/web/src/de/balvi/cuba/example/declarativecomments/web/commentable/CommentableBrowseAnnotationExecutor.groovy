@@ -16,10 +16,8 @@ class CommentableBrowseAnnotationExecutor implements BrowseAnnotationExecutor<Co
     @Inject
     ButtonsPanelHelper buttonsPanelHelper
 
-
     @Override
     void init(Commentable annotation, Window.Lookup browse, Map<String, Object> params) {
-//        Button button = buttonsPanelHelper.getOrCreateButton(editor, annotation.buttonId(), annotation.buttonsPanel())
         ListComponent listComponent = browse.getComponent(annotation.listComponent()) as ListComponent
         def action = new CommentsButtonAction(listComponent)
         listComponent.addAction(action)
@@ -28,7 +26,6 @@ class CommentableBrowseAnnotationExecutor implements BrowseAnnotationExecutor<Co
             Button dokumentButton = buttonsPanelHelper.createButton(annotation.buttonId(), buttonsPanel, [])
             dokumentButton.action = action
         }
-//        button.action = new CommentsButtonAction(browse)
     }
 
     @Override
