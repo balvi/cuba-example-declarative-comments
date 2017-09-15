@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="de.balvi.cuba.example.declarativecomments.web.comment.CommentEdit"
+        datasource="commentDs"
+        messagesPack="de.balvi.cuba.example.declarativecomments.web.comment">
+    <dsContext>
+        <datasource id="commentDs"
+                    class="de.balvi.cuba.example.declarativecomments.entity.Comment"
+                    view="comment-view"/>
+    </dsContext>
+    <layout expand="textArea"
+            spacing="true">
+        <textArea id="textArea" width="100%" datasource="commentDs" property="text"/>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

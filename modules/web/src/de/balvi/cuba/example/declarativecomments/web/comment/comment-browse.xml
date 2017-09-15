@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="de.balvi.cuba.example.declarativecomments.web.comment.CommentBrowse"
+        focusComponent="commentsTable"
+        lookupComponent="commentsTable"
+        messagesPack="de.balvi.cuba.example.declarativecomments.web.comment">
+    <dsContext>
+        <collectionDatasource id="commentsDs"
+                              class="de.balvi.cuba.example.declarativecomments.entity.Comment"
+                              view="comment-view">
+            <query>
+                <![CDATA[select e from dbcedc$Comment e where e.entityId = :param$entityId and e.entityClass = :param$entityClass order by e.commentedAt desc]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="commentsTable"
+            spacing="true">
+        <table id="commentsTable"
+               width="100%">
+            <actions>
+                <action id="create"/>
+            </actions>
+            <columns>
+                <column id="text" maxTextLength="100"/>
+                <column id="user"/>
+                <column id="commentedAt"/>
+            </columns>
+            <rows datasource="commentsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="commentsTable.create"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>
