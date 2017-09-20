@@ -43,6 +43,12 @@ public class CustomerBrowse extends AnnotatableAbstractLookup {
 
 ## Defining Annotations 
 
+The application component allows two kinds of Annotations. A class-based Annotation and a field-based Annotation.
+Field based annotations are useful if you want to enhance a particular Component on the page.
+
+### Class-based Annotation: @Commentable
+
+
 1. Create the [Commentable Annotation](https://github.com/balvi/cuba-example-declarative-comments/blob/master/modules/web/src/de/balvi/cuba/example/declarativecomments/web/commentable/Commentable.java) in your web module like this:
 
 
@@ -59,7 +65,8 @@ public @interface Commentable {
 In this case we need the parameter for the list component it should act on. Additionally it is possible to define what
 button should be used. If the button is not available, it will be created (this is sometimes interesting, when you explicitly define where the button should be placed).
 
-2. Create the [CommentableBrowseAnnotationExecutor](https://github.com/balvi/cuba-example-declarative-comments/blob/master/modules/web/src/de/balvi/cuba/example/declarativecomments/web/commentable/CommentableBrowseAnnotationExecutor.groovy) spring bean (in the web module) that implements either `BrowseAnnotationExecutor` 
+2. Create the [CommentableBrowseAnnotationExecutor](https://github.com/balvi/cuba-example-declarative-comments/blob/master/modules/web/src/de/balvi/cuba/example/declarativecomments/web/commentable/CommentableBrowseAnnotationExecutor.groovy) 
+spring bean (in the web module) that implements `BrowseAnnotationExecutor` 
 which contains the logic that sholuld get injected into the controllers:
 
 
@@ -137,5 +144,67 @@ class CommentsButtonAction extends ItemTrackingAction implements Action.HasOpenT
 ````
 
 
+### Field-based Annotation: @IconCommentedEntities
 
- 
+There is an example of a field based annotation: [@IconCommentedEntities](https://github.com/balvi/cuba-example-declarative-comments/blob/master/modules/web/src/de/balvi/cuba/example/declarativecomments/web/iconcommented/IconCommentedEntities.groovy). This annotation can be applied to Table components
+and adds a icon provider to the table. It will display an icon for entities that already have commentes associated with it.
+
+1. create a Annotation called IconCommentedEntities:
+
+````
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.FIELD)
+@interface IconCommentedEntities {
+    String icon() default "font-icon:COMMENTING_O";
+}
+````
+
+
+2. Create the [IconCommentedEntitiesFieldAnnotationBrowseExecutor](https://github.com/balvi/cuba-example-declarative-comments/blob/master/modules/web/src/de/balvi/cuba/example/declarativecomments/web/iconcommented/IconCommentedEntitiesFieldAnnotationBrowseExecutor.groovy) 
+spring bean (in the web module) that implements `BrowseFieldAnnotationExecutor` 
+which contains the logic that sholuld get injected into the controllers:
+
+
+````
+@Component
+class IconCommentedEntitiesFieldAnnotationBrowseExecutor implements BrowseFieldAnnotationExecutor<IconCommentedEntities, Table> {
+
+    @Inject
+    CommentEntityService commentEntityService
+
+    @Override
+    boolean supports(Annotation annotation) {
+        return annotation instanceof IconCommentedEntities
+    }
+
+    @Override
+    void init(IconCommentedEntities annotation, Window.Lookup browse, Table target, Map<String, Object> params) {
+
+        target.iconProvider = new ListComponent.IconProvider<Entity>() {
+            @Override
+            String getItemIcon(Entity entity) {
+                boolean hasComments = commentEntityService.hasComments(entity)
+                hasComments ? annotation.icon() : ''
+            }
+        }
+    }
+
+    @Override
+    void ready(IconCommentedEntities annotation, Window.Lookup browse, Table target, Map<String, Object> params) {
+
+    }
+}
+````
+
+3. Use the annotation for a particular Component in your controller. Here's the example of the CustomerBrowse screens:
+
+
+````
+@Commentable(listComponent = 'customersTable')
+class CustomerBrowse extends AnnotatableAbstractLookup {
+
+    @IconCommentedEntities(icon = 'font-icon:COMMENTING')
+    @Inject
+    Table<Customer> customersTable
+}
+````

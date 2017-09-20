@@ -4,7 +4,7 @@ import com.haulmont.cuba.gui.components.Button
 import com.haulmont.cuba.gui.components.ButtonsPanel
 import com.haulmont.cuba.gui.components.ListComponent
 import com.haulmont.cuba.gui.components.Window
-import de.balvi.cuba.declarativecontrollers.web.browse.BrowseAnnotationExecutor
+import de.balvi.cuba.declarativecontrollers.web.annotationexecutor.browse.BrowseAnnotationExecutor
 import org.springframework.stereotype.Component
 
 import javax.inject.Inject

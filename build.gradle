@@ -1,6 +1,6 @@
 
 buildscript {
-    ext.cubaVersion = '6.5.7'
+    ext.cubaVersion = '6.6.3'
     repositories {
         mavenLocal()
         maven {
@@ -10,8 +10,10 @@ buildscript {
                 password(rootProject.hasProperty('repoPass') ? rootProject['repoPass'] : 'cuba123')
             }
         }
-        
-        
+
+        maven {
+            url  "https://dl.bintray.com/mariodavid/cuba-components"
+        }
         
     }
     dependencies {
@@ -45,7 +47,7 @@ cuba {
 }
 
 dependencies {
-    appComponent("de.balvi.cuba.declarativecontrollers:declarativecontrollers-global:0.1")
+    appComponent("de.balvi.cuba.declarativecontrollers:declarativecontrollers-global:0.3")
 
 }
 
@@ -218,7 +220,7 @@ task restart(dependsOn: ['stop', ':app-core:deploy', ':app-web:deploy'], descrip
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.1'
+    gradleVersion = '3.4'
 }
 
 apply from: 'extra.gradle'
