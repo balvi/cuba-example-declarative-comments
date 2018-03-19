@@ -1,6 +1,6 @@
 
 buildscript {
-    ext.cubaVersion = '6.6.3'
+    ext.cubaVersion = '6.7.10'
     repositories {
         mavenLocal()
         maven {
@@ -14,7 +14,11 @@ buildscript {
         maven {
             url  "https://dl.bintray.com/mariodavid/cuba-components"
         }
-        
+
+        maven {
+            url  "https://dl.bintray.com/balvi/cuba-components"
+        }
+
     }
     dependencies {
         classpath "com.haulmont.gradle:cuba-plugin:$cubaVersion"
@@ -47,7 +51,7 @@ cuba {
 }
 
 dependencies {
-    appComponent("de.balvi.cuba.declarativecontrollers:declarativecontrollers-global:0.3")
+    appComponent("de.balvi.cuba.declarativecontrollers:declarativecontrollers-global:0.4.0")
 
 }
 
@@ -85,7 +89,7 @@ configure([globalModule, coreModule, guiModule, webModule]) {
 configure(globalModule) {
     task enhance(type: CubaEnhancing)
 
-    
+
 }
 
 configure(coreModule) {
@@ -159,7 +163,7 @@ configure(webModule) {
         compile(guiModule)
 
     }
-    
+
     task webArchive(type: Zip) {
         from file("$buildDir/web")
         from file('web')
