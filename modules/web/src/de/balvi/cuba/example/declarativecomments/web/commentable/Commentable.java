@@ -9,6 +9,8 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface Commentable {
     String listComponent() default "";
+
     String buttonId() default "commentBtn";
+
     String buttonsPanel() default "buttonsPanel";
 }

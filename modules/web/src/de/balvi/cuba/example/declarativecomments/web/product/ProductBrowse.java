@@ -1,8 +1,13 @@
 package de.balvi.cuba.example.declarativecomments.web.product;
 
-import de.balvi.cuba.declarativecontrollers.web.browse.AnnotatableAbstractLookup;
+import com.haulmont.cuba.gui.screen.*;
+import de.balvi.cuba.example.declarativecomments.entity.Product;
 import de.balvi.cuba.example.declarativecomments.web.commentable.Commentable;
 
 @Commentable(listComponent = "productsTable")
-public class ProductBrowse extends AnnotatableAbstractLookup {
+@UiController("dbcedc_Product.browse")
+@UiDescriptor("product-browse.xml")
+@LookupComponent("productsTable")
+@LoadDataBeforeShow
+public class ProductBrowse extends StandardLookup<Product> {
 }

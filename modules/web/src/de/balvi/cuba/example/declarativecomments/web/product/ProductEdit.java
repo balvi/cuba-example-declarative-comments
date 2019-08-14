@@ -1,7 +1,11 @@
 package de.balvi.cuba.example.declarativecomments.web.product;
 
-import com.haulmont.cuba.gui.components.AbstractEditor;
+import com.haulmont.cuba.gui.screen.*;
 import de.balvi.cuba.example.declarativecomments.entity.Product;
 
-public class ProductEdit extends AbstractEditor<Product> {
+@UiController("dbcedc_Product.edit")
+@UiDescriptor("product-edit.xml")
+@EditedEntityContainer("productDc")
+@LoadDataBeforeShow
+public class ProductEdit extends StandardEditor<Product> {
 }

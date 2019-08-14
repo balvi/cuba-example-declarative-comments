@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service
 import javax.inject.Inject
 
 @Service(CommentEntityService.NAME)
-public class CommentEntityServiceBean implements CommentEntityService {
+class CommentEntityServiceBean implements CommentEntityService {
 
     @Inject
     DataManager dataManager
@@ -21,14 +21,14 @@ public class CommentEntityServiceBean implements CommentEntityService {
         dataManager.loadList(loadContext)
     }
 
-    protected LoadContext<Comment> getLoadContextForComment(Entity entity) {
+    protected static LoadContext<Comment> getLoadContextForComment(Entity entity) {
         def entityClass = entity.metaClass.name
         def entityId = entity.id
         LoadContext loadContext = LoadContext.create(Comment)
-                .setQuery(LoadContext.createQuery('select e from dbcedc$Comment e where e.entityId = :entityId and e.entityClass = :entityClass order by e.commentedAt desc')
-                .setParameter('entityId', entityId)
-                .setParameter('entityClass', entityClass)
-        )
+                .setQuery(LoadContext.createQuery('select e from dbcedc_Comment e where e.entityId = :entityId and e.entityClass = :entityClass order by e.commentedAt desc')
+                        .setParameter('entityId', entityId)
+                        .setParameter('entityClass', entityClass)
+                )
         loadContext
     }
 

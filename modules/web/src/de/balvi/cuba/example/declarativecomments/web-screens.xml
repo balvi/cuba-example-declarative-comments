@@ -1,16 +1,3 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
-    <include file="de/balvi/cuba/example/declarativecomments/screens.xml"/>
-    <screen id="dbcedc$Customer.browse"
-            template="de/balvi/cuba/example/declarativecomments/web/customer/customer-browse.xml"/>
-    <screen id="dbcedc$Customer.edit"
-            template="de/balvi/cuba/example/declarativecomments/web/customer/customer-edit.xml"/>
-    <screen id="dbcedc$Product.browse"
-            template="de/balvi/cuba/example/declarativecomments/web/product/product-browse.xml"/>
-    <screen id="dbcedc$Product.edit"
-            template="de/balvi/cuba/example/declarativecomments/web/product/product-edit.xml"/>
-    <screen id="dbcedc$Comment.browse"
-            template="de/balvi/cuba/example/declarativecomments/web/comment/comment-browse.xml"/>
-    <screen id="dbcedc$Comment.edit"
-            template="de/balvi/cuba/example/declarativecomments/web/comment/comment-edit.xml"/>
 </screen-config>

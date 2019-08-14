@@ -130,7 +130,7 @@ class CommentsButtonAction extends ItemTrackingAction implements Action.HasOpenT
     void actionPerform(Component component) {
         def entity = target.singleSelected
         target.frame.openWindow(
-                'dbcedc$Comment.browse',
+                'dbcedc_Comment.browse',
                 WindowManager.OpenType.DIALOG,
                 [
                         entityId: entity.id,

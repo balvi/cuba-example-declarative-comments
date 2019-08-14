@@ -1,15 +1,16 @@
 package de.balvi.cuba.example.declarativecomments.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
+import com.haulmont.cuba.core.entity.StandardEntity;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
-import com.haulmont.cuba.core.entity.StandardEntity;
-import com.haulmont.chile.core.annotations.NamePattern;
 
 @NamePattern("%s|name")
 @Table(name = "DBCEDC_CUSTOMER")
-@Entity(name = "dbcedc$Customer")
+@Entity(name = "dbcedc_Customer")
 public class Customer extends StandardEntity {
     private static final long serialVersionUID = 3999207171952817608L;
 

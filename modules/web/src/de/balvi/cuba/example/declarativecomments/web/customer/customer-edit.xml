@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         caption="msg://editorCaption"
-        class="de.balvi.cuba.example.declarativecomments.web.customer.CustomerEdit"
-        datasource="customerDs"
-        focusComponent="fieldGroup"
+        focusComponent="form"
         messagesPack="de.balvi.cuba.example.declarativecomments.web.customer">
-    <dsContext>
-        <datasource id="customerDs"
-                    class="de.balvi.cuba.example.declarativecomments.entity.Customer"
-                    view="_local"/>
-    </dsContext>
+    <data>
+        <instance id="customerDc"
+                  class="de.balvi.cuba.example.declarativecomments.entity.Customer"
+                  view="_local">
+            <loader/>
+        </instance>
+    </data>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="windowActions"
-            spacing="true">
-        <fieldGroup id="fieldGroup"
-                    datasource="customerDs">
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="customerDc">
             <column width="250px">
-                <field property="name"/>
-                <field property="firstName"/>
+                <textField id="nameField" property="name"/>
+                <textField id="firstNameField" property="firstName"/>
             </column>
-        </fieldGroup>
-        <frame id="windowActions"
-               screen="editWindowActions"/>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
     </layout>
 </window>

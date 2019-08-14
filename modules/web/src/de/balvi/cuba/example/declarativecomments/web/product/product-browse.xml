@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         caption="msg://browseCaption"
-        class="de.balvi.cuba.example.declarativecomments.web.product.ProductBrowse"
         focusComponent="productsTable"
-        lookupComponent="productsTable"
         messagesPack="de.balvi.cuba.example.declarativecomments.web.product">
-    <dsContext>
-        <groupDatasource id="productsDs"
-                         class="de.balvi.cuba.example.declarativecomments.entity.Product"
-                         view="_local">
-            <query>
-                <![CDATA[select e from dbcedc$Product e]]>
-            </query>
-        </groupDatasource>
-    </dsContext>
+    <data readOnly="true">
+        <collection id="productsDc"
+                    class="de.balvi.cuba.example.declarativecomments.entity.Product"
+                    view="_local">
+            <loader id="productsDl">
+                <query>
+                    <![CDATA[select e from dbcedc_Product e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
     <dialogMode height="600"
                 width="800"/>
     <layout expand="productsTable"
             spacing="true">
         <filter id="filter"
                 applyTo="productsTable"
-                datasource="productsDs">
+                dataLoader="productsDl">
             <properties include=".*"/>
         </filter>
         <groupTable id="productsTable"
-                    width="100%">
+                    width="100%"
+                    dataContainer="productsDc">
             <actions>
-                <action id="create"/>
-                <action id="edit"/>
-                <action id="remove"/>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
             </actions>
             <columns>
                 <column id="name"/>
@@ -36,17 +37,17 @@
                 <column id="producer"/>
                 <column id="price"/>
             </columns>
-            <rows datasource="productsDs"/>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn"
-                        action="productsTable.create"/>
-                <button id="editBtn"
-                        action="productsTable.edit"/>
-                <button id="removeBtn"
-                        action="productsTable.remove"/>
+                <button id="createBtn" action="productsTable.create"/>
+                <button id="editBtn" action="productsTable.edit"/>
+                <button id="removeBtn" action="productsTable.remove"/>
             </buttonsPanel>
         </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
     </layout>
 </window>

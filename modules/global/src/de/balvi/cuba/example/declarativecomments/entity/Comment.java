@@ -2,26 +2,18 @@ package de.balvi.cuba.example.declarativecomments.entity;
 
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.Listeners;
 import com.haulmont.cuba.security.entity.User;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.UUID;
-import com.haulmont.cuba.core.entity.annotation.Listeners;
 
 @Listeners("dbcedc_CommentEntityListener")
 @NamePattern("%s %s|user,commentedAt")
 @Table(name = "DBCEDC_COMMENT")
-@Entity(name = "dbcedc$Comment")
+@Entity(name = "dbcedc_Comment")
 public class Comment extends StandardEntity {
     private static final long serialVersionUID = 6168029102092015614L;
 

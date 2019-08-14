@@ -2,7 +2,7 @@
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
     <menu id="application-dbcedc"
           insertBefore="administration">
-        <item screen="dbcedc$Customer.browse"/>
-        <item screen="dbcedc$Product.browse"/>
+        <item screen="dbcedc_Customer.browse"/>
+        <item screen="dbcedc_Product.browse"/>
     </menu>
 </menu-config>

@@ -1,17 +1,18 @@
 package de.balvi.cuba.example.declarativecomments.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.math.BigDecimal;
-import javax.persistence.Column;
-import javax.persistence.Lob;
-import javax.validation.constraints.NotNull;
-import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.chile.core.annotations.NamePattern;
+import com.haulmont.cuba.core.entity.StandardEntity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Lob;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 
 @NamePattern("%s|name")
 @Table(name = "DBCEDC_PRODUCT")
-@Entity(name = "dbcedc$Product")
+@Entity(name = "dbcedc_Product")
 public class Product extends StandardEntity {
     private static final long serialVersionUID = -6815219880245951924L;
 
