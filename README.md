@@ -17,7 +17,7 @@ For every commentable Entity, there should be a "comments" button in the browse 
 
 Clicking on the comments for a particular entity, should open a dialog with a list of comments that are associated to this entity:
 
-![Screenshot customer comments](/img/products-comments.png)
+![Screenshot product comments](/img/products-comments.png)
 
 ## Using the @Commentable Annotation
 
@@ -208,3 +208,6 @@ class CustomerBrowse extends AnnotatableAbstractLookup {
     Table<Customer> customersTable
 }
 ````
+
+
+![Screenshot customer comments via field annotation](/img/customer-comments-icon.png)

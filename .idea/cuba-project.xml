@@ -31,12 +31,12 @@
             <DependencyModelState>
               <option name="group" value="com.haulmont.cuba" />
               <option name="name" value="cuba-global" />
-              <option name="version" value="7.1.5" />
+              <option name="version" value="7.2.0" />
             </DependencyModelState>
             <DependencyModelState>
               <option name="group" value="de.balvi.cuba.declarativecontrollers" />
               <option name="name" value="declarativecontrollers-global" />
-              <option name="version" value="0.9.0" />
+              <option name="version" value="0.10.0-SNAPSHOT" />
             </DependencyModelState>
           </list>
         </option>
@@ -46,7 +46,7 @@
         <option name="artifactSnapshot" value="true" />
         <option name="tomcatDir" value="$PROJECT_DIR$/deploy/tomcat" />
         <option name="groovySupport" value="true" />
-        <option name="gradleVersion" value="5.2.1" />
+        <option name="gradleVersion" value="5.6.4" />
         <option name="dbmsDbType" value="hsql" />
         <option name="oracleSystemUser" value="system" />
         <option name="oracleSystemPassword" value="manager" />
@@ -54,8 +54,8 @@
     </option>
     <option name="dbArtifacts">
       <map>
-        <entry key="com.haulmont.cuba" value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.haulmont.cuba/cuba-core/7.1.5/d08451cb3fd5760852aed167506396d9454a0744/cuba-core-7.1.5-db.zip" />
-        <entry key="de.balvi.cuba.declarativecontrollers" value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/de.balvi.cuba.declarativecontrollers/declarativecontrollers-core/0.9.0/fc5616ebb308258201b15b6f91993dbc4593f70e/declarativecontrollers-core-0.9.0-db.zip" />
+        <entry key="com.haulmont.cuba" value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.haulmont.cuba/cuba-core/7.2.0/abbc608303ec7e508ec66bb514af7104c42fd814/cuba-core-7.2.0-db.zip" />
+        <entry key="de.balvi.cuba.declarativecontrollers" value="$MAVEN_REPOSITORY$/de/balvi/cuba/declarativecontrollers/declarativecontrollers-core/0.10.0-SNAPSHOT/declarativecontrollers-core-0.10.0-SNAPSHOT-db.zip" />
       </map>
     </option>
   </component>
