@@ -8,7 +8,7 @@
     <context-param>
         <param-name>appPropertiesConfig</param-name>
         <param-value>
-            classpath:de/balvi/dct/app.properties
+            classpath:de/balvi/cuba/example/declarativecomments/app.properties
             /WEB-INF/local.app.properties
             "file:${catalina.base}/conf/app-core/local.app.properties"
         </param-value>

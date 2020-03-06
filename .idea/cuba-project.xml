@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CubaProjectState">
+    <option name="hasState" value="true" />
+    <option name="cubaModelState">
+      <CubaModelState>
+        <option name="repositories">
+          <list>
+            <RepositoryModelState>
+              <option name="url" value="https://repo.cuba-platform.com/content/groups/work" />
+              <option name="user" value="cuba" />
+              <option name="pass" value="3r6+CXYTcUs=" />
+              <option name="stateVersion" value="2" />
+            </RepositoryModelState>
+            <RepositoryModelState>
+              <option name="url" value="https://dl.bintray.com/mariodavid/cuba-components" />
+              <option name="user" value="" />
+              <option name="pass" value="/awcoVvWe18=" />
+              <option name="stateVersion" value="2" />
+            </RepositoryModelState>
+            <RepositoryModelState>
+              <option name="url" value="https://dl.bintray.com/balvi/cuba-components" />
+              <option name="user" value="" />
+              <option name="pass" value="/awcoVvWe18=" />
+              <option name="stateVersion" value="2" />
+            </RepositoryModelState>
+          </list>
+        </option>
+        <option name="appComponents">
+          <list>
+            <DependencyModelState>
+              <option name="group" value="com.haulmont.cuba" />
+              <option name="name" value="cuba-global" />
+              <option name="version" value="7.1.5" />
+            </DependencyModelState>
+            <DependencyModelState>
+              <option name="group" value="de.balvi.cuba.declarativecontrollers" />
+              <option name="name" value="declarativecontrollers-global" />
+              <option name="version" value="0.9.0" />
+            </DependencyModelState>
+          </list>
+        </option>
+        <option name="mavenLocal" value="true" />
+        <option name="artifactGroup" value="de.balvi.cuba.example.declarativecomments" />
+        <option name="artifactVersion" value="0.2" />
+        <option name="artifactSnapshot" value="true" />
+        <option name="tomcatDir" value="$PROJECT_DIR$/deploy/tomcat" />
+        <option name="groovySupport" value="true" />
+        <option name="gradleVersion" value="5.2.1" />
+        <option name="dbmsDbType" value="hsql" />
+        <option name="oracleSystemUser" value="system" />
+        <option name="oracleSystemPassword" value="manager" />
+      </CubaModelState>
+    </option>
+    <option name="dbArtifacts">
+      <map>
+        <entry key="com.haulmont.cuba" value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.haulmont.cuba/cuba-core/7.1.5/d08451cb3fd5760852aed167506396d9454a0744/cuba-core-7.1.5-db.zip" />
+        <entry key="de.balvi.cuba.declarativecontrollers" value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/de.balvi.cuba.declarativecontrollers/declarativecontrollers-core/0.9.0/fc5616ebb308258201b15b6f91993dbc4593f70e/declarativecontrollers-core-0.9.0-db.zip" />
+      </map>
+    </option>
+  </component>
+</project>

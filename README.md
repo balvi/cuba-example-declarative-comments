@@ -13,11 +13,11 @@ a UI where for every controller it should be possible to just declare that this 
 
 For every commentable Entity, there should be a "comments" button in the browse screen:
 
-![Screenshot customer browser](https://github.com/balvi/cuba-example-declarative-comments/blob/master/img/customer-browse.png)
+![Screenshot products browser](/img/products-browse.png)
 
 Clicking on the comments for a particular entity, should open a dialog with a list of comments that are associated to this entity:
 
-![Screenshot customer comments](https://github.com/balvi/cuba-example-declarative-comments/blob/master/img/customer-comments.png)
+![Screenshot customer comments](/img/products-comments.png)
 
 ## Using the @Commentable Annotation
 

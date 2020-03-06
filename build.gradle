@@ -1,6 +1,6 @@
 
 buildscript {
-    ext.cubaVersion = '7.0.10'
+    ext.cubaVersion = '7.1.5'
     repositories {
         mavenLocal()
         maven {
@@ -51,7 +51,7 @@ cuba {
 
 dependencies {
     appComponent("com.haulmont.cuba:cuba-global:$cubaVersion")
-    appComponent('de.balvi.cuba.declarativecontrollers:declarativecontrollers-global:1.0.0-SNAPSHOT')
+    appComponent('de.balvi.cuba.declarativecontrollers:declarativecontrollers-global:0.9.0')
 }
 
 def hsql = 'org.hsqldb:hsqldb:2.4.1'
@@ -79,16 +79,41 @@ configure([globalModule, coreModule, webModule]) {
 configure([globalModule, coreModule, webModule]) {
     apply(plugin: 'groovy')
 
+
     sourceSets {
-        main { groovy { srcDirs = ["src"] } }
-        test { groovy { srcDirs = ["test"] } }
+        main {
+            groovy { srcDirs = ["src"] }
+            // new config
+            java.outputDir = new File(project.buildDir, "classes/main")
+            groovy.outputDir = new File(project.buildDir, "classes/main")
+        }
+        test {
+            groovy { srcDirs = ["test"] }
+            // new config
+            java.outputDir = new File(project.buildDir, "classes/test")
+            groovy.outputDir = new File(project.buildDir, "classes/test")
+        }
     }
+    sourceSets.main.output.classesDirs.setFrom(new File(project.buildDir, "classes/main"))
+    sourceSets.test.output.classesDirs.setFrom(new File(project.buildDir, "classes/test"))
+
 }
 
 configure(globalModule) {
-    task enhance(type: CubaEnhancing)
+    dependencies {
+        if (!JavaVersion.current().isJava8()) {
+            runtime('javax.xml.bind:jaxb-api:2.3.1')
+            runtime('org.glassfish.jaxb:jaxb-runtime:2.3.1')
+        }
 
-
+    }
+    entitiesEnhancing {
+        main { enabled = true }
+        test {
+            enabled = false
+            persistenceConfig = 'dataimport-test-persistence.xml'
+        }
+    }
 }
 
 configure(coreModule) {
