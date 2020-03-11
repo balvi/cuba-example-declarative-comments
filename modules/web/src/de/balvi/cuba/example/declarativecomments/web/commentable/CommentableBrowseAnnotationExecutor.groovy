@@ -3,6 +3,7 @@ package de.balvi.cuba.example.declarativecomments.web.commentable
 import com.haulmont.cuba.gui.components.Button
 import com.haulmont.cuba.gui.components.ButtonsPanel
 import com.haulmont.cuba.gui.components.ListComponent
+import com.haulmont.cuba.gui.components.Window
 import com.haulmont.cuba.gui.screen.StandardLookup
 import de.balvi.cuba.declarativecontrollers.web.annotationexecutor.browse.BrowseAnnotationExecutor
 import de.balvi.cuba.declarativecontrollers.web.helper.ButtonsPanelHelper
@@ -18,7 +19,13 @@ class CommentableBrowseAnnotationExecutor implements BrowseAnnotationExecutor<Co
     ButtonsPanelHelper buttonsPanelHelper
 
     @Override
-    void init(Commentable annotation, StandardLookup browse) {
+    boolean supports(Annotation annotation) {
+        annotation instanceof Commentable
+    }
+
+
+    @Override
+    void init(Commentable annotation, Window.Lookup browse, Map<String, Object> params) {
         ListComponent listComponent = browse.getWindow().getComponent(annotation.listComponent()) as ListComponent
         def action = new CommentsButtonAction(listComponent)
         listComponent.addAction(action)
@@ -30,13 +37,7 @@ class CommentableBrowseAnnotationExecutor implements BrowseAnnotationExecutor<Co
     }
 
     @Override
-    boolean supports(Annotation annotation) {
-        annotation instanceof Commentable
-    }
-
-
-    @Override
-    void ready(Commentable annotation, StandardLookup browse) {
+    void ready(Commentable annotation, Window.Lookup browse, Map<String, Object> params) {
 
     }
 }

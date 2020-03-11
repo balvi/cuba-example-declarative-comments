@@ -1,50 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
         caption="msg://browseCaption"
+        class="de.balvi.cuba.example.declarativecomments.web.comment.CommentBrowse"
         focusComponent="commentsTable"
-        messagesPack="de.balvi.cuba.example.declarativecomments.web.screens.comment">
-    <data readOnly="true">
-        <collection id="commentsDc"
-                    class="de.balvi.cuba.example.declarativecomments.entity.Comment"
-                    view="comment-view">
-            <loader id="commentsDl">
-                <query>
-                    <![CDATA[select e from dbcedc_Comment e where e.entityId = :param$entityId and e.entityClass = :param$entityClass order by e.commentedAt desc]]>
-                </query>
-            </loader>
-        </collection>
-    </data>
+        lookupComponent="commentsTable"
+        messagesPack="de.balvi.cuba.example.declarativecomments.web.comment">
+    <dsContext>
+        <collectionDatasource id="commentsDs"
+                              class="de.balvi.cuba.example.declarativecomments.entity.Comment"
+                              view="comment-view">
+            <query>
+                <![CDATA[select e from dbcedc_Comment e where e.entityId = :param$entityId and e.entityClass = :param$entityClass order by e.commentedAt desc]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
     <dialogMode height="600"
                 width="800"/>
     <layout expand="commentsTable"
             spacing="true">
-        <filter id="filter"
-                applyTo="commentsTable"
-                dataLoader="commentsDl">
-            <properties include=".*"/>
-        </filter>
-        <groupTable id="commentsTable"
-                    width="100%"
-                    dataContainer="commentsDc">
+        <table id="commentsTable"
+               width="100%">
             <actions>
-                <action id="create" type="create"/>
-                <action id="edit" type="edit"/>
-                <action id="remove" type="remove"/>
+                <action id="create"/>
             </actions>
             <columns>
                 <column id="text" maxTextLength="100"/>
                 <column id="user"/>
                 <column id="commentedAt"/>
             </columns>
+            <rows datasource="commentsDs"/>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="commentsTable.create"/>
+                <button id="createBtn"
+                        action="commentsTable.create"/>
             </buttonsPanel>
-        </groupTable>
-        <hbox id="lookupActions" spacing="true" visible="false">
-            <button action="lookupSelectAction"/>
-            <button action="lookupCancelAction"/>
-        </hbox>
+        </table>
     </layout>
 </window>
